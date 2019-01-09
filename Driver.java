@@ -1,12 +1,12 @@
 import java.util.Scanner;
-public class Driver {
+
+abstract public class Driver {
 	public static void main(String[] args) {
 		int num, carturns = 0, truckturns = 0;
 		String choice = "hi";
 		Scanner input = new Scanner(System.in);
 		Car car = new Car("car"); // CHANGE TEXT IN QUOTATIONS
 		Truck truck = new Truck("truck"); // CHANGE TEXT IN QUOTATIONS
-
 		while (!choice.equals("13")) {
 			System.out.println("What do you want to do?");
 			System.out.println("1. Vehicle status");
@@ -19,7 +19,8 @@ public class Driver {
 			System.out.println("13. QUIT");
 			choice = input.nextLine();
 			System.out.println();
-			if (choice.equals("1")) { // Checks all the statistics of the vehicle
+			if (choice.equals("1")) { // Checks all the statistics of the
+										// vehicle
 				car.getVehicleStatus();
 				System.out.println("Number of turns: " + carturns);
 				System.out.println();
@@ -69,32 +70,37 @@ public class Driver {
 				} else if (choice.equals(truck.getVehicleName())) {
 					System.out.println("What speed? ");
 					num = Vehicle.getinput();
-					truck.setSpeed(num);
+					if (num > 75) {
+						truck.setSpeed(num);
+					} else {
+						truck.setSpeed(num);
+					}
 				}
 			}
 			if (choice.equals("6")) { // gets speed
 				System.out.println(car.getVehicleName() + " is going " + car.getSpeed());
 				System.out.println(truck.getVehicleName() + " is going " + truck.getSpeed());
 			}
-			if (choice.equals("7")) { //increases speed			
+			if (choice.equals("7")) { // increases speed
 				System.out.println("Which vehicle?");
 				System.out.println(car.getVehicleName() + ", " + truck.getVehicleName());
-				choice = input.nextLine();		
+				choice = input.nextLine();
 				if (choice.equals(car.getVehicleName())) {
 					System.out.println("How much are you increasing the speed? ");
 					num = Vehicle.getinput();
 					car.increaseSpeed(num);
+					car.checkSpeed();
 				} else if (choice.equals(truck.getVehicleName())) {
 					System.out.println("How much are you increasing the speed? ");
 					num = Vehicle.getinput();
 					truck.increaseSpeed(num);
+					truck.checkSpeed();
 				}
 			}
-			
-			if (choice.equals("8")) { //decreases speed				
+			if (choice.equals("8")) { // decreases speed
 				System.out.println("Which vehicle?");
 				System.out.println(car.getVehicleName() + ", " + truck.getVehicleName());
-				choice = input.nextLine();			
+				choice = input.nextLine();
 				if (choice.equals(car.getVehicleName())) {
 					System.out.println("How much are you decreasing the speed? ");
 					num = Vehicle.getinput();
@@ -103,6 +109,7 @@ public class Driver {
 					System.out.println("How much are you decreasing the speed? ");
 					num = Vehicle.getinput();
 					truck.decreaseSpeed(num);
+					truck.checkSpeed();
 				}
 			}
 			if (choice.equals("9")) {
