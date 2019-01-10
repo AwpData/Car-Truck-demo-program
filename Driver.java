@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class Driver {
+abstract public class Driver {
 	public static void main(String[] args) {
 		int num, carturns = 0, truckturns = 0;
 		String choice = "hi";
 		Scanner input = new Scanner(System.in);
 		Car car = new Car("car"); // CHANGE TEXT IN QUOTATIONS
-		Truck truck = new Truck("truck"); // CHANGE TEXT IN QUOTATIONS
+		Truck truck = new Truck("truck"); // CHANGE TEXT IN QUOTATION
 		while (!choice.equals("13")) {
 			System.out.println("What do you want to do?");
 			System.out.println("1. Vehicle status");
@@ -53,10 +53,14 @@ public class Driver {
 				choice = input.nextLine();
 				if (choice.equals(car.getVehicleName())) {
 					System.out.println(car.getVehicleName() + " is " + car.turn());
-					carturns++;
+					if (!car.getVehicleOnOrOff().equals("stopped")) {
+						carturns++;
+					}
 				} else if (choice.equals(truck.getVehicleName())) {
 					System.out.println(truck.getVehicleName() + " is " + truck.turn());
-					truckturns++;
+					if (!truck.getVehicleOnOrOff().equals("stopped")) {
+						truckturns++;
+					}
 				}
 			}
 			if (choice.equals("5")) { // sets the speed
@@ -105,6 +109,7 @@ public class Driver {
 					System.out.println("How much are you decreasing the speed? ");
 					num = Vehicle.getinput();
 					car.decreaseSpeed(num);
+					car.checkSpeed();
 				} else if (choice.equals(truck.getVehicleName())) {
 					System.out.println("How much are you decreasing the speed? ");
 					num = Vehicle.getinput();
