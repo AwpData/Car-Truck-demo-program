@@ -17,6 +17,10 @@ public class Vehicle {
 		System.out.println(VehicleName + " is going " + speed + " MPH");
 		return "";
 	}
+	
+	public String setVehicleStatusOff() {
+		return status = "stopped";
+	}
 
 	public String start() {
 		if (status.equals("started")) {
@@ -32,16 +36,25 @@ public class Vehicle {
 			System.out.println("Vehicle has already been stopped");
 		} else {
 			System.out.println("Stopping vehicle...");
+			speed = 0;
 		}
 		return status = "stopped";
 	}
 
 	public String turn() {
+		if (getVehicleOnOrOff().equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return "failing to turn...";
+		}
 		return "turning...";
 	}
 
 	public int setSpeed(int num) {
-		speed = num;
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+		} else {
+			speed = num;
+		}
 		return speed;
 	}
 
@@ -50,10 +63,18 @@ public class Vehicle {
 	}
 
 	public int increaseSpeed(int num) {
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return speed = 0;
+		} 
 		return speed += num;
 	}
 
 	public int decreaseSpeed(int num) {
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return speed = 0;
+		}
 		speed -= num;
 		if (speed < 0) {
 			return speed = 0;
@@ -78,4 +99,5 @@ public class Vehicle {
 	public String getLicensePlate() {
 		return LicensePlate;
 	}
+	
 }
