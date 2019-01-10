@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-abstract public class Driver {
+public class Driver {
 	public static void main(String[] args) {
 		int num, carturns = 0, truckturns = 0;
 		String choice = "hi";
