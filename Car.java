@@ -1,55 +1,103 @@
-import java.util.Random;
+import java.util.Scanner;
 
-public class Car extends Vehicle {
-	static Random num = new Random();
-	private String trunk = "Closed";
+public class Vehicle {
+	private String VehicleName;
+	protected int speed;
+	private String status = "stopped";
+	private String LicensePlate;
 
-	public Car(String VehicleName) {
-		super(VehicleName, "C" + num.nextInt(1000));
+	public Vehicle(String VehicleName, String LicensePlate) {
+		this.VehicleName = VehicleName;
+		this.LicensePlate = LicensePlate;
 	}
 
-	@Override
-	public int setSpeed(int num) {
-		if (num > 300) {
-			System.out.println("Error, speed over 300, setting speed to 300.");
-			super.speed = 300;
-		} else {
-			super.speed = num;
-		}
-		return super.speed = speed;
-	}
-
-	public void checkSpeed() {
-		if (super.speed == 300 || super.speed > 300) {
-			System.out.println("Error, speed over 300, setting speed to 300.");
-			super.speed = 300;
-		}
-	}
-
-	public String openTrunk() {
-		if (trunk.equals("open")) {
-			System.out.println("Trunk is already open cannot open again");
-		} else {
-			System.out.println("Opening Trunk on " + getVehicleName() + "...");
-		}
-		return trunk = "open";
-	}
-
-	public String closeTrunk() {
-		if (trunk.equals("closed")) {
-			System.out.println("Trunk is already closed cannot close again");
-		} else {
-			System.out.println("Closing Trunk on " + getVehicleName() + "...");
-		}
-		return trunk = "closed";
-	}
-
-	@Override
 	public String getVehicleStatus() {
-		System.out.println(getVehicleName() + " license plate: " + getLicensePlate());
-		System.out.println(getVehicleName() + " is currently " + getVehicleOnOrOff());
-		System.out.println(getVehicleName() + " is going " + getSpeed());
-		System.out.println("Trunk is " + trunk);
+		System.out.println(VehicleName + " license plate: " + LicensePlate);
+		System.out.println(VehicleName + " is currently " + status);
+		System.out.println(VehicleName + " is going " + speed + " MPH");
 		return "";
 	}
+	
+	public String setVehicleStatusOff() {
+		return status = "stopped";
+	}
+
+	public String start() {
+		if (status.equals("started")) {
+			System.out.println("Vehicle has already been started");
+		} else {
+			System.out.println("Starting vehicle...");
+		}
+		return status = "started";
+	}
+
+	public String stop() {
+		if (status.equals("stopped")) {
+			System.out.println("Vehicle has already been stopped");
+		} else {
+			System.out.println("Stopping vehicle...");
+			speed = 0;
+		}
+		return status = "stopped";
+	}
+
+	public String turn() {
+		if (getVehicleOnOrOff().equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return "failing to turn...";
+		}
+		return "turning...";
+	}
+
+	public int setSpeed(int num) {
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+		} else {
+			speed = num;
+		}
+		return speed;
+	}
+
+	public String getSpeed() {
+		return speed + " MPH";
+	}
+
+	public int increaseSpeed(int num) {
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return speed = 0;
+		} 
+		return speed += num;
+	}
+
+	public int decreaseSpeed(int num) {
+		if (status.equals("stopped")) {
+			System.out.println("Start the vehicle first!");
+			return speed = 0;
+		}
+		speed -= num;
+		if (speed < 0) {
+			return speed = 0;
+		}
+		return speed;
+	}
+
+	public static int getinput() {
+		Scanner input = new Scanner(System.in);
+		int num = input.nextInt();
+		return num;
+	}
+
+	public String getVehicleName() {
+		return VehicleName;
+	}
+
+	public String getVehicleOnOrOff() {
+		return status;
+	}
+
+	public String getLicensePlate() {
+		return LicensePlate;
+	}
+	
 }
