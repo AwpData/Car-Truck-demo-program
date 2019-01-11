@@ -80,4 +80,21 @@ public class Car extends Vehicle {
 		System.out.println("Trunk is " + trunk);
 		return "";
 	}
+
+	@Override
+	void getGasMileage() {
+		System.out.println("Car Gas Mileage: 100 MPG");
+	}
+
+	@Override
+	void getMaxSpeed() {
+		System.out.println("Car Max Speed: 300 MPH");
+
+	}
+
+	@Override
+	void getWeight() {
+		System.out.println("Car Weight: 1 ton");
+
+	}
 }
