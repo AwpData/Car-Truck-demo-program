@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
-public class Vehicle {
+abstract class Vehicle {
+	abstract void getGasMileage();
+	abstract void getMaxSpeed();
+	abstract void getWeight();
+
 	private String VehicleName;
 	protected int speed;
 	private String status = "stopped";
@@ -17,7 +21,7 @@ public class Vehicle {
 		System.out.println(VehicleName + " is going " + speed + " MPH");
 		return "";
 	}
-	
+
 	public String setVehicleStatusOff() {
 		return status = "stopped";
 	}
@@ -66,7 +70,7 @@ public class Vehicle {
 		if (status.equals("stopped")) {
 			System.out.println("Start the vehicle first!");
 			return speed = 0;
-		} 
+		}
 		return speed += num;
 	}
 
@@ -99,5 +103,5 @@ public class Vehicle {
 	public String getLicensePlate() {
 		return LicensePlate;
 	}
-	
+
 }
