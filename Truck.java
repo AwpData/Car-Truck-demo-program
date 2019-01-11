@@ -75,4 +75,21 @@ public class Truck extends Vehicle {
 		System.out.println("Tailgate is " + tailgate);
 		return "";
 	}
+
+	@Override
+	void getGasMileage() {
+		System.out.println("Truck Gas Mileage: 20 MPG");
+	}
+
+	@Override
+	void getMaxSpeed() {
+		System.out.println("Truck Max Speed: 75 MPH");
+
+	}
+
+	@Override
+	void getWeight() {
+		System.out.println("Truck Weight: 2 tons");
+
+	}
 }
