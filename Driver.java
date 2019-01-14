@@ -5,8 +5,8 @@ public class Driver {
 		int num, carturns = 0, truckturns = 0;
 		String choice = "hi";
 		Scanner input = new Scanner(System.in);
-		Car car = new Car("car"); // CHANGE TEXT IN QUOTATIONS
-		Truck truck = new Truck("truck"); // CHANGE TEXT IN QUOTATION
+		Car car = new Car("Audi"); // CHANGE TEXT IN QUOTATIONS
+		Truck truck = new Truck("Ford"); // CHANGE TEXT IN QUOTATION
 		while (!choice.equals("14")) {
 			System.out.println("What do you want to do?");
 			System.out.println("1. Vehicle status");
@@ -141,6 +141,20 @@ public class Driver {
 				truck.getGasMileage();
 				truck.getMaxSpeed();
 				truck.getWeight();
+			}
+			if (choice.equals("15")) { //test instanceOf
+				if (car instanceof Car) { // TRUE
+					System.out.println("car is a Car");
+				}
+				if (truck instanceof Truck) { // TRUE
+					System.out.println("truck is a Truck");
+				}
+				if (car instanceof Vehicle) {// TRUE
+					System.out.println("car is a Vehicle");
+				}
+				if (truck instanceof Vehicle) { // TRUE
+					System.out.println("truck is a Vehicle");
+				}
 			}
 			System.out.println();
 		}
